@@ -1,0 +1,57 @@
+menu "Camaro display configuration"
+
+    config CAMARO_VEMS_UART_PORT
+        int "VEMS UART port"
+        range 0 2
+        default 1
+
+    config CAMARO_VEMS_UART_RX_GPIO
+        int "VEMS UART RX GPIO"
+        range 0 48
+        default 44
+        help
+            Connect this pin to TXD from the VEMS/MAX3232 interface.
+
+    config CAMARO_VEMS_UART_TX_GPIO
+        int "VEMS UART TX GPIO"
+        range 0 48
+        default 43
+        help
+            Connect this pin to RXD on the VEMS/MAX3232 interface. It may be
+            left disconnected when only receiving AIM telemetry.
+
+    config CAMARO_VEMS_UART_BAUD
+        int "VEMS UART baud rate"
+        range 1200 1000000
+        default 19200
+
+    config CAMARO_RPM_SCALE_MAX
+        int "RPM bar maximum"
+        range 1000 20000
+        default 8000
+
+    config CAMARO_SHIFT_START_RPM
+        int "Shiftlight start RPM"
+        range 500 19000
+        default 4500
+
+    config CAMARO_SHIFT_RPM
+        int "Shift RPM (red flash)"
+        range 1000 20000
+        default 6500
+
+    config CAMARO_CLT_WARNING_C
+        int "Coolant warning temperature (C)"
+        range 50 150
+        default 100
+
+    config CAMARO_DEMO_MODE
+        bool "Demo mode (generate dummy VEMS data instead of reading UART)"
+        default n
+        help
+            When enabled, the firmware feeds the dashboard with synthetic,
+            slowly sweeping RPM/MAP/coolant/lambda values instead of reading
+            the VEMS UART. Useful for bench-testing the display without an
+            ECU connected.
+
+endmenu

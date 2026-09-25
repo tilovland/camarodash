@@ -1,0 +1,11 @@
+/build/
+/managed_components/
+/dependencies.lock
+/sdkconfig
+/sdkconfig.old
+/.test-build/
+/.claude/
+
+# FreeCAD sikkerhetskopier
+*.FCBak
+*.FCStd1
